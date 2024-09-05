@@ -6,8 +6,7 @@ app = Flask(__name__)  # Flask app initialization
 
 # Load and preprocess data
 def load_and_preprocess_data():
-    # Ensure your CSV path is correct
-    file_path = 'hyderabad.csv'  # Replace with correct CSV path
+    file_path = 'hyderabad.csv'  # CSV path for file in the root directory
     df = pd.read_csv(file_path)
 
     # Clean and preprocess data
@@ -24,6 +23,11 @@ def load_and_preprocess_data():
     df[['Rating']] = scaler.fit_transform(df[['Rating']])
 
     return df
+
+# Default route
+@app.route('/')
+def home():
+    return "Welcome to the TravelBot API!"
 
 # Recommendation route
 @app.route('/recommendation', methods=['POST'])
@@ -66,3 +70,5 @@ def recommendation():
     # Return the response as JSON
     return jsonify({"fulfillmentText": response_text})
 
+if __name__ == '__main__':
+    app.run(debug=True)

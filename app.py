@@ -7,7 +7,7 @@ app = Flask(__name__)  # Flask app initialization
 # Load and preprocess data
 def load_and_preprocess_data():
     # Ensure your CSV path is correct
-    file_path = r'C:\Users\asus\Desktop\hyderabad.csv'  # Replace with correct CSV path
+    file_path = 'hyderabad.csv'  # Replace with correct CSV path
     df = pd.read_csv(file_path)
 
     # Clean and preprocess data
